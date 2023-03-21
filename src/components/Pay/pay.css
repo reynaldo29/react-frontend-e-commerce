@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+    font-family: 'Quicksand',sans-serif;   
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content:center ;
+    align-items:center ;
+    padding: 20px 100px;
+}
+.button{
+    color:#1cc49d;
+    background-color: #1b2f31;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2em;
+    width: 6em;
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
+}

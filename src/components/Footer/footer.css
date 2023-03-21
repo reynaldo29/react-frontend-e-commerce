@@ -1,0 +1,50 @@
+.Container9 {
+  display: flex;
+}
+
+.Left2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.Desc2 {
+  margin: 20px 0px;
+}
+.SocialContainer {
+  display: flex;
+}
+
+.Center2 {
+  flex: 1;
+  padding: 20px;
+}
+.Title3 {
+  margin-bottom: 30px;
+}
+.List3 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ListItem {
+  width: 50%;
+  margin-bottom: 10px;
+}
+.Right2 {
+  
+  flex: 1;
+  padding: 20px;
+}
+.ContactItem4 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.Payment {
+  width: 50%;
+}

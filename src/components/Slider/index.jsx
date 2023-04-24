@@ -1,5 +1,5 @@
 import "./slider.css";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 
 import { useState } from "react";
 
@@ -46,7 +46,9 @@ const ImgContainer = styled.div`
   flex:1;
 `
 const Image = styled.img`
-  height:80%;
+width: 100%;
+height: 100%;
+object-fit: cover;
 `
 const InfoContainer = styled.div`
   flex:1;

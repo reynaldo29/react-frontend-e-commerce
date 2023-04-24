@@ -1,7 +1,11 @@
 .container6 {
   
-  padding: 20px;
+  padding: 0px 120px 20px 120px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.agua{
+  
+  padding: 30px 120px 30px 120px;
 }

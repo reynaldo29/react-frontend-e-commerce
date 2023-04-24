@@ -1,0 +1,94 @@
+.Wrapper20 {
+  padding: 20px;
+}
+
+.Title20 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.Top20 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.TopText20 {
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 0px 10px;
+}
+
+.Bottom20 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Info20 {
+  flex: 3;
+}
+
+.Product20 {
+  display: flex;
+  justify-content: space-between;
+}
+.ProductDetail20 {
+  flex: 2;
+  display: flex;
+}
+
+.Image20 {
+  width: 200px;
+}
+
+.Details20 {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.PriceDetail20 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProductAmountContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.ProductAmount {
+  font-size: 24px;
+  margin: 5px;
+}
+.ProductPrice20 {
+  font-size: 24px;
+  font-weight: 200;
+}
+.HR20 {
+  background-color: #eee;
+  border: none;
+  height: 1px;
+}
+.Summary20 {
+  flex: 1;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  height: 50vh;
+}
+.SummaryTittle20 {
+  font-weight: 200;
+}
+.Button21 {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+}

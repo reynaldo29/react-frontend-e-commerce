@@ -1,6 +1,6 @@
 import React from 'react'
 import "./newsletter.css"
-import { Send } from "@material-ui/icons";
+
 const Newsleeter = () => {
   return (
     <div className='container8'>
@@ -8,7 +8,7 @@ const Newsleeter = () => {
         <div className='Desc'>Get timely updates from your favorite products.</div>
         <div className='InputContainer'>
             <input className='Input2' placeholder='Your email'></input>
-            <button className='Button2'><Send/></button>
+            <button className='Button2'>send</button>
         </div>
     </div>
   )

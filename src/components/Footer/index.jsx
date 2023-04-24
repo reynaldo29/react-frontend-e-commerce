@@ -8,7 +8,7 @@ import {
   Pinterest,
   Room,
   Twitter,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import styled from "styled-components";
 
 const SocialIcon = styled.div`

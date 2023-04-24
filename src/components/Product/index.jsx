@@ -3,7 +3,7 @@ import {
   FavoriteBorderOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import "./product.css";
 
 const Product = ({ item }) => {
@@ -12,6 +12,7 @@ const Product = ({ item }) => {
       <div className="Circle" />
       <img className="Image5" src={item.img} />
       <div className="Info3">
+        
         <div className="Icon5">
           <ShoppingCartOutlined />
         </div>

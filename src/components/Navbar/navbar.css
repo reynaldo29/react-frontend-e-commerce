@@ -1,8 +1,11 @@
 .container {
   height: 60px;
+  background: #fcf9f7;
 }
 
 .wrapper {
+  font-family: "Rubik", Helvetica;
+  background-color: #fcf9f7;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -13,6 +16,7 @@
   flex: 1;
   display: flex;
   align-items: center;
+  margin-left: 30px;
 }
 
 .language {
@@ -21,7 +25,6 @@
 }
 
 .searchContainer {
-  border: 0.5px solid lightgray;
   display: flex;
   align-items: center;
   margin-left: 25px;
@@ -52,4 +55,30 @@
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+}
+
+.imgLogo {
+  height: 55px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+}
+
+.selection-logo {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  position: relative;
+  width: 228px;
+}
+
+.Titlelogo {
+  color: #394149;
+  font-family: "Poppins", Helvetica;
+  font-size: 30px;
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0;
+  margin-left: 75px;
 }

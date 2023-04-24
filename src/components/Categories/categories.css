@@ -1,7 +1,6 @@
-.Container4{
-    display:flex;
-    padding:20px;
-    justify-content: space-between;
-    
-
+.Container4 {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  background-color: #fcf9f7;
 }

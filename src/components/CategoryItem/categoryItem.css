@@ -1,14 +1,17 @@
 .container5 {
   flex: 1;
-  margin: 3px;
-  height: 70vh;
+  margin: 1px;
+  height: 60vh;
   position: relative;
+  display: flex;
+  justify-content: center;
   
 }
 .Image {
-  width: 100%;
-  height: 100%;
+  width: 65%;
+  height: 65%;
   object-fit: cover;
+  border-radius: 10%;
 }
 .info{
     position:absolute;

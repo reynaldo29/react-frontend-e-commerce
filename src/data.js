@@ -27,16 +27,19 @@ export const sliderItems = [
       id: 1,
       img: "https://res.cloudinary.com/dibrkuyqk/image/upload/v1680902008/v6_8217_mogya6.jpg",
       title: "ANIVERSARIO",
+      cat:"woman"
     },
     {
       id: 2,
       img: "https://res.cloudinary.com/dibrkuyqk/image/upload/v1680902020/v6_8218_xqtwpp.jpg",
       title: "FECHA ESPECIAL",
+      cat:"coat"
     },
     {
       id: 3,
       img: "https://res.cloudinary.com/dibrkuyqk/image/upload/v1680902032/v6_8219_dnnl2r.jpg",
       title: "COMPROMISO",
+      cat:"jeans"
     },
   ];
 

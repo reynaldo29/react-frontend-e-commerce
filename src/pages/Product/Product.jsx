@@ -28,6 +28,7 @@ const Product = () => {
         <div className="InfoContainer3">
           <h1 className="Title3">Denim Jumpsuit</h1>
           <p className="Desc3">
+            lorem ipsun dolor sit amet, consectur adispcon elit / eljvk
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
             commodi quasi accusantium esse placeat voluptate omnis aliquid
             eligendi fuga aut quisquam qui corrupti, tempore sint quas enim

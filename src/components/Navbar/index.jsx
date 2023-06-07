@@ -27,7 +27,7 @@ const Navbar = () => {
           <div className="menuItem">CONTACTO</div>
 
           <div className="menuItem">
-            <Badge badgeContent={4} color="primary">
+            <Badge badgecontent={4} color="primary">
               <ShoppingCartOutlined />
             </Badge>
           </div>

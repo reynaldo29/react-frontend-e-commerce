@@ -4,11 +4,10 @@
 }
 
 .wrapper {
-  font-family: "Rubik", Helvetica;
-  background-color: #fcf9f7;
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   justify-content: space-between;
 }
 
@@ -16,7 +15,6 @@
   flex: 1;
   display: flex;
   align-items: center;
-  margin-left: 30px;
 }
 
 .language {

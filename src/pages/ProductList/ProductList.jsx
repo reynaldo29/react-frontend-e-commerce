@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Announcement from "../../components/Announcement";
 import Products from "../../components/Products";
 import Newsletter from "../../components/Newsletter/index";
 import Footer from "../../components/Footer/index";
 import "./ProductList.css";
+import { useLocation } from "react-router-dom";
 
 const ProductList = () => {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
+
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
+
+  const handleFilter = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+    console.log("cnsol1", filters);
+  };
+
+  const handleSort = (e) => {
+    setSort(e.target.value);
+    console.log("cnsl2", sort);
+  };
+
   return (
     <div className="Container8">
       <Navbar />
@@ -15,10 +36,13 @@ const ProductList = () => {
       <div className="FilterContainer">
         <div className="Filter">
           <span className="FilterText">Filter Products:</span>
-          <select className="Select2">
-            <option className="Option2" disabled selected>
-              Color
-            </option>
+          <select
+            name="color"
+            onChange={handleFilter}
+            className="Select2"
+            defaultValue="default"
+          >
+            <option className="Option2">Color</option>
             <option className="Option2">White</option>
             <option className="Option2">Black</option>
             <option className="Option2">Red</option>
@@ -27,10 +51,13 @@ const ProductList = () => {
             <option className="Option2">Green</option>
           </select>
 
-          <select className="Select2">
-            <option className="Option2" disabled selected>
-              Size
-            </option>
+          <select
+            name="size"
+            onChange={handleFilter}
+            className="Select2"
+            defaultValue="default"
+          >
+            <option className="Option2">Size</option>
             <option className="Option2">XS</option>
             <option className="Option2">S</option>
             <option className="Option2">M</option>
@@ -40,16 +67,24 @@ const ProductList = () => {
         </div>
         <div className="Filter">
           <span className="FilterText">Sort Products:</span>
-          <select className="Select2">
-            <option className="Option2" selected>
-             Newest
+          <select
+            onChange={handleSort}
+            className="Select2"
+            defaultValue="default"
+          >
+            <option value="newest" className="Option2">
+              Newest
             </option>
-            <option className="Option2">Price (asc)</option>
-            <option className="Option2">Price (desc)</option>
+            <option value="asc" className="Option2">
+              Price (asc)
+            </option>
+            <option value="desc" className="Option2">
+              Price (desc)
+            </option>
           </select>
         </div>
       </div>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </div>

@@ -4,6 +4,7 @@ import {
     ShoppingCartOutlined,
     LoginOutlined,
 } from "@mui/icons-material";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import logo from "../../assets/illustration.png";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import React from "react";
@@ -86,6 +87,11 @@ const Navbar = () => {
                     <Link to={"/login"}>
                         <li>
                             <LoginOutlined />
+                        </li>
+                    </Link>
+                    <Link to={"/register"}>
+                        <li>
+                            <VpnKeyIcon />
                         </li>
                     </Link>
                 </ul>

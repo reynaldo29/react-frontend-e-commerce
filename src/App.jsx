@@ -31,16 +31,15 @@ const App = () => {
                         path="/login"
                         element={user ? <Navigate to="/" /> : <Login />}
                     />
+                    <Route
+                        path="/register"
+                        element={user ? <Navigate to="/" /> : <Register />}
+                    />
                     <Route path="/product/show/:id" element={<Product />} />
                 </Route>
                 <Route path="/products/:category" element={<ProductList />} />
 
                 <Route path="/cart" element={<Cart />} />
-
-                <Route
-                    path="/register"
-                    element={user ? <Navigate to="/" /> : <Register />}
-                />
             </Routes>
         </Router>
     );

@@ -4,45 +4,57 @@ import { Box, TextField, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useMutation } from "react-query";
+import { signUpUser } from "../../services/auth";
+import { useNavigate } from "react-router-dom";
+
 const Register = () => {
-    /* return (
-    <div className="Container10">
-      <div className="Wrapper4">
-        <h1 className="Title4">CREATE AN ACCOUNT</h1>
-        <form className="Form4">
-          <input className="Input4" placeholder="name"/>
-          <input className="Input4" placeholder="last name"/>
-          <input className="Input4" placeholder="username"/>
-          <input className="Input4" placeholder="email"/>
-          <input className="Input4" placeholder="password"/>
-          <input className="Input4" placeholder="confirm password"/>
-          <span className="Agreement">
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
-          </span>
-          <button className="Button4">CREATE</button>
-        </form>
-      </div>
-    </div>
-  ); */
+    const mutation = useMutation(signUpUser);
+    const navigate = useNavigate();
+
     const onSubmit = async (
-        { email, password },
+        { name, lastname, email, password, passwordConfirm, address, phone },
         { setSubmitting, setErrors, resetForm }
     ) => {
-        try {
-            console.log(email, password);
-            resetForm();
-        } catch (error) {
-            console.log("error al traer datos");
-        } finally {
-            setSubmitting(false);
-        }
+        mutation.mutate(
+            {
+                name,
+                lastname,
+                email,
+                password: passwordConfirm,
+                address,
+                phone,
+            },
+            {
+                onSuccess: (data) => {
+                    resetForm();
+                    navigate("/login");
+                },
+                onError: (error) => {
+                    if (error.response.status === 409) {
+                        return setErrors({
+                            email: "El correo ya está en uso",
+                        });
+                    }
+
+                    if (error.response.status === 500) {
+                        return setErrors({
+                            email: "Error al conectar con el servidor",
+                            password: "Error al conectar con el servidor",
+                        });
+                    }
+                },
+                onSettled: () => {
+                    setSubmitting(false);
+                },
+            }
+        );
     };
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(),
         lastname: Yup.string().required(),
-        email: Yup.string().email().required(),
+        email: Yup.string().trim().email().required(),
         password: Yup.string().trim().min(6).required(),
         address: Yup.string().required(),
         phone: Yup.string().min(7).max(9).required(),

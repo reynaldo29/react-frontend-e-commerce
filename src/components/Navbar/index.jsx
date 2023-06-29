@@ -1,4 +1,4 @@
-import { Badge } from "@mui/icons-material";
+import Badge from '@mui/material/Badge';
 import {
     Search,
     ShoppingCartOutlined,
@@ -10,6 +10,7 @@ import React from "react";
 
 import "./navbar.css";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
     /* return (
@@ -50,6 +51,8 @@ const Navbar = () => {
 
     
   ); */
+  const quantity =useSelector(state=>state.cart.quantity)
+ 
     return (
         <section className="flex h-[104px] w-full place-items-center bg-[#FCF9F7]">
             <div className="flex w-full flex-row place-content-around place-items-center">
@@ -80,9 +83,14 @@ const Navbar = () => {
                     <li className="cursor-pointer">
                         <Search />
                     </li>
+                    <Link to={"/cart"}>
                     <li>
+                    <Badge badgeContent={quantity} color="secondary">
                         <ShoppingCartOutlined />
+                        </Badge>
                     </li>
+                    </Link>
+                    
                     <Link to={"/login"}>
                         <li>
                             <LoginOutlined />

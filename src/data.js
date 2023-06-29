@@ -239,7 +239,7 @@ export const products = [
     {
         id: 1,
         name: "Peluche con detalles",
-        price: 12.5,
+        price: 20.5,
         img: "https://res.cloudinary.com/dibrkuyqk/image/upload/v1680903723/v6_8225_hu5qhz.jpg",
     },
     {

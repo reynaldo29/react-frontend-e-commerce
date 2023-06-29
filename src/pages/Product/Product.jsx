@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import { products } from "../../data";
 import ProductFeatured from "../../components/ProductsFeatured";
 import Products from "../../components/Products";
+import { addProduct } from "../../redux/cartRedux";
+import { useDispatch } from "react-redux";
 const FilterColor = styled.div`
     border: solid;
     width: 20px;
@@ -21,7 +23,21 @@ const FilterColor = styled.div`
 const Product = () => {
     const { id } = useParams();
     const producto = products.find((item) => item.id === Number(id));
+    const [quantity,setQuantity] = useState(1);
+    const dispatch =useDispatch()
 
+    const handleQuantity =(type) =>{
+        if(type==="dec"){
+           quantity>1 && setQuantity(quantity-1)
+        }else{
+            setQuantity(quantity+1)
+        }
+    }
+
+    const handleClick =()=>{
+        dispatch(addProduct({...producto,quantity}));
+        
+    }
     /* return (
         <div>
             <div className="Wrapper6">
@@ -115,16 +131,16 @@ const Product = () => {
                             <div className="flex w-full flex-row gap-2">
                                 <div className="flex h-[48px] w-1/3 flex-row place-content-between">
                                     <div className="flex h-full w-1/3 cursor-pointer items-center justify-center bg-gray-300">
-                                        <Remove />
+                                        <Remove onClick={()=>handleQuantity("dec")}/>
                                     </div>
                                     <div className="flex h-full w-1/3 items-center justify-center bg-white">
-                                        {1}
+                                        {quantity}
                                     </div>
                                     <div className="flex h-full w-1/3 cursor-pointer items-center justify-center bg-gray-300">
-                                        <Add />
+                                        <Add onClick={()=>handleQuantity("inc")}/>
                                     </div>
                                 </div>
-                                <button className="w-2/3 bg-[#e9ac8e]">
+                                <button onClick={handleClick} className="w-2/3 bg-[#e9ac8e]">
                                     Añadir al carrito
                                 </button>
                             </div>

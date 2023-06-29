@@ -1,9 +1,41 @@
 import "./item.css";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/cartRedux";
 const ProductItem = ({ item }) => {
+    const products =useSelector(state=>state.cart.products)
+    const [quantity,setQuantity] = useState(1);
+    const dispatch =useDispatch()
+
+    const handleClick =(item)=>{
+        dispatch(addProduct({...item,quantity}));
+    }
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = (item,value) => {
+        setOpen(false);
+      if(value==="yes"){
+        dispatch(addProduct({...item,quantity}));
+      }
+      
+    };
+
     return (
         <div className="bg-[#F7F0EB] font-['Tangerine',normal]">
             <div className="box-padre relative flex h-96 w-80 place-content-center overflow-hidden">
@@ -20,8 +52,40 @@ const ProductItem = ({ item }) => {
                         <VisibilityIcon fontSize="small" />
                     </div>
                     <div className="flex w-1/2 place-content-center place-items-center gap-2 text-white">
-                        <p>Añadir</p>
-                        <ShoppingCartIcon fontSize="small" />
+                        {products.find((product) => product.id === Number(item.id))?(
+                            <>
+                            <p className="cursor-pointer" 
+                           onClick={()=>handleClickOpen()}>Añadir</p>
+                           <ShoppingCartIcon fontSize="small" />
+                           <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {item.name}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Este producto ya existe dentro del carrito de compras. Desea agregarlo nuevamente?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={()=>handleClose(item,"yes")}>Si</Button>
+          <Button onClick={handleClose} autoFocus>
+            No
+          </Button>
+        </DialogActions>
+      </Dialog>
+                           </>
+                        ):(
+                            <>
+                            <p className="cursor-pointer" 
+                           onClick={()=>handleClick(item)}>Añadir</p>
+                           <ShoppingCartIcon fontSize="small" />
+                           </>
+                        )}
                     </div>
                 </div>
             </div>

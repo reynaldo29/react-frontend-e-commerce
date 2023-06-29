@@ -1,13 +1,16 @@
-import React from "react";
 import styled from "styled-components";
 import { Add, Remove } from "@mui/icons-material";
-
+import React, { useState } from "react";
 import "./Cart.css";
 import Announcement from "../../components/Announcement";
 import Navbar from "../../components/Navbar";
-
+import { useDispatch } from 'react-redux';
 import Footer from "../../components/Footer/index";
-
+import { useSelector } from "react-redux";
+import Button from '@mui/material/Button';
+import { removeProduct } from "../../redux/cartRedux";
+import { decreaseQuantity } from "../../redux/cartRedux";
+import { increaseQuantity } from "../../redux/cartRedux";
 const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
@@ -32,6 +35,20 @@ const SumaryItem20 = styled.div`
   font-size: ${(props) => props.type === "total" && "24px"};
 `;
 const Cart = () => {
+  const cart = useSelector(state=>state.cart)
+  const dispatch = useDispatch();
+
+  const handleRemoveProduct = (productId)=>{
+    dispatch(removeProduct(productId))
+  }
+
+  const handleDecreaseQuantity = (productId)=>{
+    dispatch(decreaseQuantity(productId))
+  }
+
+  const handleIncreaseQuantity = (productId)=>{
+    dispatch(increaseQuantity(productId))
+  }
   return (
     <div className="Container20">
       <Navbar />
@@ -50,18 +67,21 @@ const Cart = () => {
 
         <div className="Bottom20">
           <div className="Info20">
+
+            {cart.products.map(product=>(
             <div className="Product20">
               <div className="ProductDetail20">
                 <img
                   className="Image20"
-                  src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A"
+                  src={product.img}
                 ></img>
+               
                 <div className="Details20">
                   <span className="ProductName20">
-                    <b>Product:</b>JESSIE THUNDER SHOES
+                    <b>Product:</b>{product.name}
                   </span>
                   <span className="ProductId20">
-                    <b>ID:</b>93813718293
+                    <b>ID:</b>{product.id}
                   </span>
                   <ProductColor color="black" />
                   <span className="ProductSize20">
@@ -72,53 +92,30 @@ const Cart = () => {
 
               <div className="PriceDetail20">
                 <div className="ProductAmountContainer">
-                  <Add />
-                  <div className="ProductAmount">2</div>
-                  <Remove />
+                  <Add  className="cursor-pointer" onClick={()=>handleIncreaseQuantity(product.id)} />
+                  
+                  <div className="ProductAmount">{product.quantity}</div>
+                  <Remove className="cursor-pointer" onClick={()=>handleDecreaseQuantity(product.id)}/>
                 </div>
 
-                <div className="ProductPrice20">$ 30</div>
+                <div className="ProductPrice20">{product.price*product.quantity}</div>
+                <div>
+              <Button onClick={()=>handleRemoveProduct(product.id)}variant="contained" color="error">Remove</Button>
               </div>
+              </div>
+             
+             
             </div>
+            ))}
             <hr className="HR20" />
-
-            <div className="Product20">
-              <div className="ProductDetail20">
-                <img
-                  className="Image20"
-                  src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png"
-                ></img>
-                <div className="Details20">
-                  <span className="ProductName20">
-                    <b>Product:</b> HAKURA T-SHIRT
-                  </span>
-                  <span className="ProductId20">
-                    <b>ID:</b> 93813718293
-                  </span>
-                  <ProductColor color="gray" />
-                  <span className="ProductSize20">
-                    <b>Size:</b> M
-                  </span>
-                </div>
-              </div>
-
-              <div className="PriceDetail20">
-                <div className="ProductAmountContainer">
-                  <Add />
-                  <div className="ProductAmount">2</div>
-                  <Remove />
-                </div>
-
-                <div className="ProductPrice20">$ 20</div>
-              </div>
-            </div>
           </div>
+          
 
           <div className="Summary20">
             <h1 className="SummaryTittle20">ORDER SUMMARY</h1>
             <SumaryItem20>
               <span className="SumaryItemText20">SubTotal</span>
-              <span className="SumaryItemPrice20">$ 80</span>
+              <span className="SumaryItemPrice20">{cart.total}</span>
             </SumaryItem20>
 
             <SumaryItem20>
@@ -133,7 +130,7 @@ const Cart = () => {
 
             <SumaryItem20 type="total">
               <span className="SumaryItemText20">Total</span>
-              <span className="SumaryItemPrice20">$ 80</span>
+              <span className="SumaryItemPrice20">{cart.total}</span>
               
             </SumaryItem20>
             <button className="Button21">CHECKOUT NOW</button>
